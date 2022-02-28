@@ -1,0 +1,4 @@
+With Synbn: 
+  net = torch.nn.SyncBatchNorm.convert_sync_batchnorm(net).to(device)
+Each device can have same running_mean and running var, these buffer is always same rather than only after 'forward' method, 
+means process using global data to do BN.
