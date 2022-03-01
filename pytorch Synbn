@@ -5,3 +5,6 @@ means process using global data to do BN.
 
 Note: "broadcast_buffers=True" only ensure buffer is same after forward, but not ensure is same at each time, 
 and not support self-defined buffer.
+
+DistributedDataParrallel(net, device_ids, output_device, broadcast_buffers=True), return a new obj, use obj.module.xx 
+to replace net.xx
