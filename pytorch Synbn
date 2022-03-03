@@ -8,6 +8,53 @@ Note: "broadcast_buffers=True" only ensure buffer is same after forward, but not
 and not contain self-defined buffer (register_buffer or define directly).
 To sync, for example, use `{dist.barrier(), dist.all_reduce(tensor)}`.
 
+DataParallel:
+  paerser.add_argument('--device_ids', type=str, default='0, 1, 2', help='Training Devices')
+  device_ids = list(map(int, args.device_ids.split(',')))
+  device = torch.device('cuda:{}'.format(device_ids[0]))
+  model = Net().to(device)
+  model = DataParallel(model ,device_ids=device_ids, output_device=device)
+  output = net(input_var)  # input_var can be on any device, including cpu
+  
+  Note: Debug, add `input()` to pause
+ 
+DistributedDataParallel
+import torch.distributed as dist
+from torch.nn.parallel import DistributedDataParallel
+from torch.utils.data.distributed import DistributedSampler
 
+  parser.add_argument('--device_ids', type=str, default='0, 1, 2', help='Training Devices')
+  parser.add_argument('--local_rank', type=int, default=-1, help='DDP parameter')
+  device_ids = list(map(int, args.device_ids.split(',')))
+  **dist.init_process_group(backend='nccl')
+  device = torch.device('cuda:{}'.format(device_ids[args.local_rank]))
+  **torch.cuda.set_device(device)
+  model = Net().to(device)
+  {*model = torch.nn.SunaBatchNorm.convert_sync_batchnorm(net).to(device)}
+  model = DistributedDataParallel(model, device_ids=[device_ids[args.local_rank]], 
+                                  output_device=device_ids[args.local_rank], find_unused_parameters=True)
+                                  
+  train_set = tochvision.datasets.MNIST(train=True)
+  test_set = torchvision.datasets.MNIST(train=False)
+  
+  *sampler_train = DistributedSampler(train_set)
+  *sampler_test = DistributedSampler(test_set)
+  {
+    train_loader = DataLoader(train_set, batch_size=8, sampler=sampler_train)
+    test_loader = DataLoader(test_set, batch_size=8, sampler=sampler_test)
+    
+    for each epoch:
+      sampler_train.set_epoch(epoch)
+      
+     torch.save(net.module.state_dict(), model_save_name)
+  }
+  
+  train_loader = DataLoader(train_set, batch_size=8, shuffle=True)
+  test_loader = DataLoader(test_set, batch_size=8, shuffle=False)
+  
+  
+  
+  
+  
 DistributedDataParrallel(net, device_ids, output_device, broadcast_buffers=True), return a new obj, use obj.module.xx 
 to replace net.xx
