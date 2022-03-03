@@ -3,8 +3,11 @@ With Synbn:
 Each device can have same running_mean and running var, these buffer is always same rather than only after 'forward' method, 
 means process using global data to do BN.
 
+
 Note: "broadcast_buffers=True" only ensure buffer is same after forward, but not ensure is same at each time, 
-and not support self-defined buffer.
+and not contain self-defined buffer (register_buffer or define directly).
+To sync, for example, use `{dist.barrier(), dist.all_reduce(tensor)}`.
+
 
 DistributedDataParrallel(net, device_ids, output_device, broadcast_buffers=True), return a new obj, use obj.module.xx 
 to replace net.xx
