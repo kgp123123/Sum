@@ -1,1 +1,8 @@
+from PIL importImage, ImageFilter
+im = Image.open("path")
+# im.size is [W, H]
 
+
+import cv2
+im1 = cv2.imread("path")
+# im1 is a array, and size is [H, W, C]
