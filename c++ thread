@@ -1,2 +1,3 @@
 th = std::thread(*func, args...), thread is runnign when created
 th.join() is just wait for thread return
+th.detach() not wait, dependent, 
