@@ -1,0 +1,2 @@
+th = std::thread(*func, args...), thread is runnign when created
+th.join() is just wait for thread return
