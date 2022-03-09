@@ -1,3 +1,5 @@
 th = std::thread(*func, args...), thread is runnign when created
 th.join() is just wait for thread return
 th.detach() not wait, dependent, 
+
+std::automic<T>, generate a object, the operation for object is automic
