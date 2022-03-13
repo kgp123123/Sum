@@ -1,1 +1,4 @@
 1. pthread_cond_t cond; perform as a signal, if there is no thread block, pthread_cond_signal will have no influence, and can't store. (sem_t has num)
+
+LT and ET, if some data reamin in buffer, LT will triggle next time, but ET will not, so ET need to use while to ensure there is no data in buffer,
+and always set nonblock.
