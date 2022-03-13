@@ -2,3 +2,5 @@
 
 LT and ET, if some data reamin in buffer, LT will triggle next time, but ET will not, so ET need to use while to ensure there is no data in buffer,
 and always set nonblock.
+
+getcwd: return is the running path not the running-file's path
