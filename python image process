@@ -5,4 +5,9 @@ im = Image.open("path")
 
 import cv2
 im1 = cv2.imread("path")
-# im1 is a array, and size is [H, W, C]
+# im1 is a array, and size is [H, W, C], (RGB)
+
+
+import imageio
+im2 = imageio.imread('path')
+# im2 is imageio.core.util.Array: return [H, W, C], (RGBA)
