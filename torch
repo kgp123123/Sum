@@ -1,0 +1,9 @@
+torch.cat: each elem's other dim need be same
+    a = torch.randn(3, 5)
+    b = torch.randn(2, 5)
+    torch.cat((a, b), 0) -> (5, 5)
+    
+torch.stack: each elem's shape need be same
+    a = torch.randn(3, 5)
+    b = torch.randn(3, 5)
+    torch.stack((a, b), i) -> (3, 5) insert 2 at i position
