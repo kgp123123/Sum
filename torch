@@ -9,3 +9,6 @@ torch.stack: each elem's shape need be same
     torch.stack((a, b), i) -> (3, 5) insert 2 at i position
 
 torch.expand(*size): expand dim with size 1
+
+
+torch.linspace(start, end, steps): Contain start and end.
