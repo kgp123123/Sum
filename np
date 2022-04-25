@@ -1,0 +1,2 @@
+np.concatenate([a, b], 0):
+  concatenate the array, not expand dimension.
