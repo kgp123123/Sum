@@ -12,3 +12,9 @@ torch.expand(*size): expand dim with size 1
 
 
 torch.linspace(start, end, steps): Contain start and end.
+
+torch.meshgrid(torch.linspace(0, w - 1, w), torch.linspace(0, h-1, h)):
+    return the shape of (w, h)
+    
+torch.searchsorted(cdf,u, right=True)
+    find the insert position of u in cdf, if right=True, the last position when cdf has same elems.
