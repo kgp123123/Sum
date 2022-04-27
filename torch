@@ -18,3 +18,14 @@ torch.meshgrid(torch.linspace(0, w - 1, w), torch.linspace(0, h-1, h)):
     
 torch.searchsorted(cdf,u, right=True)
     find the insert position of u in cdf, if right=True, the last position when cdf has same elems.
+
+torch.tensor(): Constructs a tensor with :attr:`data`
+    Always copy data
+        If want to avoid copy, use torch.Tensor(), ndarray use torch.as_tensor()
+        torch.tensor(x) is equalvalent to x.clone().detach()
+    torch.tensor(): Not change the data type as default data type.
+
+torch.nn.ReLU(): Note consistant problem.
+
+torch.meshgrid(tensor1, tensor2, ...): return the same shape
+       
