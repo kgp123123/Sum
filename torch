@@ -31,3 +31,7 @@ torch.meshgrid(tensor1, tensor2, ...): return the same shape
        
 torch.expand: return a new view
 torch.repeat: repeat data at new memory.
+
+
+torhc.autograd.Function:
+    return value's required_grad will convert to True.
