@@ -1,1 +1,4 @@
 eval: conver a string to variable
+
+import sys
+  sys.getrefcount(object)
