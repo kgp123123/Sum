@@ -4,4 +4,8 @@ np.bincount(x: np.ndarray, weight=None, min_length=0):
   x: a ndarray of position, non-negative int
   return ndarray have x.max() + 1 elements, [pos_0, pos_1, pos_2, ..., pos_max], and each pos is the pos occur time in x
   
-  
+ 
+ np.save(save_name, arr)
+ np.savez(save_name, a, b, c) -> key: 'arr_0', 'arr_1', 'arr_2'
+ np.savez(save_name, a=a, b=b, c=c) -> key: 'a', 'b', 'c'
+ np.savez_compressed(save_name, a, b, c): compressed, more time for reading
