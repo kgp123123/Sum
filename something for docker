@@ -1,0 +1,2 @@
+docker run -it -d --name <docker-name> -v <server-position>:/source <mirror-name> bash
+  name, mount <v>, 
