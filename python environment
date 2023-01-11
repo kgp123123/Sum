@@ -1,0 +1,4 @@
+Some problem about python environment. If use conda create multi python env, if not assign USER_SITE and USER_BASE, pip command may influent other 
+python envs.
+
+Use python -m site to find the `site.py`'s location, then modify USER_SITE to `env`, USER_BASE to `env/lib/pythonx.x/site-packages`.
